@@ -79,3 +79,11 @@ def test_proactive_mac_interception():
     assert "Nepal" in resp
     assert len(updated_messages) == 2
     assert updated_messages[1]["role"] == "assistant"
+
+def test_natural_language_agent_routing():
+    engine = AgentEngine()
+    assert engine.determine_effective_model("ask agy to refactor this module") == "agy"
+    assert engine.determine_effective_model("ask codex to optimize concurrency") == "codex"
+    assert engine.determine_effective_model("ask claude to design the interface") == "claude"
+    assert engine.determine_effective_model("write a python test for my database") == "qwen"
+    assert engine.determine_effective_model("how are you today") == "llama3.2"

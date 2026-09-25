@@ -85,6 +85,13 @@ class AgentEngine:
             return self.active_model
 
         p = prompt.lower()
+        if "agy" in p or "antigravity" in p:
+            return "agy"
+        if "claude" in p:
+            return "claude"
+        if "codex" in p:
+            return "codex"
+
         complex_triggers = [
             "refactor", "build", "debug", "implement", "architect", "function", "class",
             "test", "tests", "pytest", "python", "code", "script", "app", "write",
