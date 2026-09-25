@@ -42,8 +42,8 @@ class AgentEngine:
         "auto": {"name": "Autonomous Auto-Router", "type": "hybrid", "desc": "Dynamic routing based on task complexity"}
     }
 
-    def __init__(self, default_model: str = "llama3.2"):
-        self.active_model = default_model if default_model in self.AVAILABLE_MODELS else "llama3.2"
+    def __init__(self, default_model: str = "auto"):
+        self.active_model = default_model if default_model in self.AVAILABLE_MODELS else "auto"
 
     def set_model(self, model_key: str) -> Tuple[bool, str]:
         """Switches the active model."""
@@ -87,7 +87,8 @@ class AgentEngine:
         p = prompt.lower()
         complex_triggers = [
             "refactor", "build", "debug", "implement", "architect", "function", "class",
-            "test suite", "react", "fastapi", "docker", "pipeline", "fix bug", "git"
+            "test", "tests", "pytest", "python", "code", "script", "app", "write",
+            "react", "fastapi", "docker", "pipeline", "fix bug", "git", "optimize"
         ]
         if any(w in p for w in complex_triggers):
             return "qwen"  # Local coding powerhouse

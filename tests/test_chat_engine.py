@@ -19,7 +19,7 @@ from core.agent_engine import AgentEngine
 
 def test_model_switching():
     engine = AgentEngine()
-    assert engine.active_model == "llama3.2"
+    assert engine.active_model == "auto"
 
     ok, msg = engine.set_model("qwen")
     assert ok is True

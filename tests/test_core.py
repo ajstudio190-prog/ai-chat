@@ -348,7 +348,7 @@ def test_evolution_memory_interaction_formulation(tmp_path):
 def test_agent_engine_integration():
     from core.agent_engine import AgentEngine
     engine = AgentEngine()
-    assert engine.active_model == "llama3.2"
+    assert engine.active_model == "auto"
     ok, msg = engine.set_model("qwen")
     assert ok is True
     assert engine.active_model == "qwen"
